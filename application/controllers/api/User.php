@@ -34,19 +34,7 @@ class User extends REST_Controller {
 		$response_array=[
 			"status"=>"error"
 		];
-		if (empty($id)) {
-			$response_array["data"] = $this->db->get('users')->result();
-			$response_array["status"] = "success";
-		} else {
-			$this->db->where('id', $id);
-			$result= $this->db->get('users')->result();
-			// var_dump($result);exit;
-			if(!empty($result)){
-				
-				$response_array["data"] =$result;
-				$response_array["status"] = "success";
-			}
-		}
+		
 		if($response_array["status"]=="error")
 			$this->response($response_array,self::HTTP_NOT_FOUND );
 		else
